@@ -1,0 +1,15 @@
+{% extends "tracker/base.html" %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Your Logged Foods</h2>
+    {% for log in log_details %}
+      <p>
+        {{ log.name }}: {{ log.quantity }}g × {{ log.calories_per_gram|floatformat:2 }} = 
+        <strong>{{ log.calories|floatformat:2 }} calories</strong>
+      </p>
+    {% endfor %}
+    
+    <h3>Total Calories: {{ total_calories|floatformat:2 }}</h3>
+  </div>
+{% endblock %}
