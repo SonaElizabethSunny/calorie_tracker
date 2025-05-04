@@ -52,9 +52,7 @@ A web application built with Django that allows users to track their calorie int
 4. Commit your changes (`git commit -am 'Add new feature'`).
 5. Push to the branch (`git push origin feature-name`).
 6. Create a new Pull Request.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+--------------------------------------------------
 
 8. Usage
    
@@ -80,3 +78,9 @@ Integrate barcode scanner (for packaged food items).
 Create a mobile-friendly PWA version (Progressive Web App).
 
 Add calorie burn tracking via exercise logs.
+
+
+Author
+
+Sona Sunny
+GitHub Profile: https://github.com/SonaElizabethSunny
