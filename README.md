@@ -57,6 +57,7 @@ A web application built with Django that allows users to track their calorie int
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 8. Usage
+   
 After setting up the project:
 
 bash
@@ -64,7 +65,8 @@ Copy code
 python manage.py runserver
 Visit http://127.0.0.1:8000/ in your browser to use the calorie tracker app.
 
-9. Fyture Improvements
+9. Future Improvements
+    
 Add daily goal reminders.
 
 Dark mode support.
