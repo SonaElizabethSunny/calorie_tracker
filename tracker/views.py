@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import FoodLogForm
 from .models import FoodLog, FoodItem
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login,logout
 from django.contrib.auth.decorators import login_required
 from django.utils.timezone import now
 
@@ -44,6 +44,12 @@ def signup(request):
         form = UserCreationForm()
 
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def custom_logout(request):
+    logout(request)
+    return render(request, 'registration/logout.html')
+
 
 @login_required
 def log_food(request):
