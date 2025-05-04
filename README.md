@@ -52,7 +52,7 @@ A web application built with Django that allows users to track their calorie int
 4. Commit your changes (`git commit -am 'Add new feature'`).
 5. Push to the branch (`git push origin feature-name`).
 6. Create a new Pull Request.
---------------------------------------------------
+
 
 ## Usage
    
