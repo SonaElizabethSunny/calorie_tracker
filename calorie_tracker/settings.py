@@ -10,7 +10,13 @@ SECRET_KEY = 'django-insecure-5$kyf^x5^w#k#l2&35skd7&)m&(e8g2!22@0u%@i2y#6zjk&!7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['']  # Replace with your Render domain after deployment
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Application definition
 INSTALLED_APPS = [
@@ -25,6 +31,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Must be just after SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -38,7 +45,7 @@ ROOT_URLCONF = 'calorie_tracker.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -50,8 +57,6 @@ TEMPLATES = [
         },
     },
 ]
-
-
 
 WSGI_APPLICATION = 'calorie_tracker.wsgi.application'
 
@@ -77,11 +82,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']  # ✅ Include if you're adding static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -89,4 +89,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
-
