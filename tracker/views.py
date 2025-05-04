@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import FoodLogForm
 from .models import FoodLog, FoodItem
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login,logout
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils.timezone import now
+from django.views.decorators.http import require_POST  # ✅ Added for POST-only logout
 
 
 def home(request):
@@ -33,6 +34,7 @@ def home(request):
     }
     return render(request, 'tracker/home.html', context)
 
+
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -46,9 +48,10 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
-def custom_logout(request):
+@require_POST  # ✅ Enforces logout only via POST
+def logout_view(request):
     logout(request)
-    return render(request, 'registration/logout.html')
+    return redirect('home')
 
 
 @login_required
@@ -63,7 +66,6 @@ def log_food(request):
     else:
         form = FoodLogForm()
 
-    # Pass food items to template to allow users to select foods
     food_items = FoodItem.objects.all()
     context = {
         'form': form,
@@ -95,6 +97,3 @@ def food_log_summary(request):
         'log_details': log_details,
         'total_calories': total_calories
     })
-
-
-

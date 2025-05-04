@@ -12,7 +12,10 @@
     {% if user.is_authenticated %}
       <a href="{% url 'food_log_summary' %}">Summary</a> |
       <a href="{% url 'log_food' %}">Log Food</a> |
-      <a href="{% url 'logout' %}">Logout</a>
+      <form method="post" action="{% url 'logout' %}" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link p-0 m-0 align-baseline" style="color: #0d6efd;">Logout</button>
+      </form>
     {% else %}
       <a href="{% url 'login' %}">Login</a> |
       <a href="{% url 'signup' %}">Signup</a>
@@ -21,9 +24,9 @@
 
   <script src="{% static 'js/script.js' %}"></script>
 
-    <!-- Search Input -->
+  <!-- Search Input -->
   <div class="text-center mt-4">
-  <input type="text" id="search-input" class="form-control w-50 mx-auto" placeholder="Search food..." onkeyup="filterFood()">
+    <input type="text" id="search-input" class="form-control w-50 mx-auto" placeholder="Search food..." onkeyup="filterFood()">
   </div>
 
   <div class="container">
@@ -31,7 +34,7 @@
       {% csrf_token %}
       <div class="row" id="food-list">
 
-        <!-- Yogurt -->
+        <!-- Food Items Start -->
         <div class="col-md-4 food-item" data-name="Yogurt">
           <div class="food-card">
             <img src="https://cdn-prod.medicalnewstoday.com/content/images/articles/323/323169/greek-yoghurt-in-bowl.jpg" alt="Yogurt">
@@ -41,7 +44,6 @@
           </div>
         </div>
 
-        <!-- Dates -->
         <div class="col-md-4 food-item" data-name="Dates">
           <div class="food-card">
             <img src="https://i.pinimg.com/736x/08/d5/a4/08d5a4278b3e9bb32f1ccbe43b9229de.jpg" alt="Dates">
@@ -51,7 +53,6 @@
           </div>
         </div>
 
-        <!-- Banana -->
         <div class="col-md-4 food-item" data-name="Banana">
           <div class="food-card">
             <img src="https://i.pinimg.com/474x/8a/5a/7c/8a5a7c88384e7641f1556845c04e8925.jpg" alt="Banana">
@@ -61,7 +62,6 @@
           </div>
         </div>
 
-        <!-- Ice Cream -->
         <div class="col-md-4 food-item" data-name="Ice Cream">
           <div class="food-card">
             <img src="https://i.pinimg.com/736x/5c/f2/1f/5cf21f77d0b99bf21160b556510948be.jpg" alt="Ice Cream">
@@ -71,7 +71,6 @@
           </div>
         </div>
 
-        <!-- Burger -->
         <div class="col-md-4 food-item" data-name="Burger">
           <div class="food-card">
             <img src="https://i.pinimg.com/474x/77/fe/73/77fe73fe2444046dc17eed609e2b5bfc.jpg" alt="Burger">
@@ -81,7 +80,6 @@
           </div>
         </div>
 
-        <!-- Pizza -->
         <div class="col-md-4 food-item" data-name="Pizza">
           <div class="food-card">
             <img src="https://i.pinimg.com/736x/98/7e/42/987e42caf6f3f7e8f38ed3aa8186bb12.jpg" alt="Pizza">
@@ -91,7 +89,6 @@
           </div>
         </div>
 
-        <!-- Orange -->
         <div class="col-md-4 food-item" data-name="Orange">
           <div class="food-card">
             <img src="https://i.pinimg.com/474x/db/9f/1d/db9f1d7ae4d64b9cfb04fb477ff580c9.jpg" alt="Orange">
@@ -101,7 +98,6 @@
           </div>
         </div>
 
-        <!-- Apple -->
         <div class="col-md-4 food-item" data-name="Apple">
           <div class="food-card">
             <img src="https://i.pinimg.com/736x/0c/c7/25/0cc72544aff82d20bc6bc56f50d6bb7a.jpg" alt="Apple">
@@ -111,7 +107,6 @@
           </div>
         </div>
 
-        <!-- Chicken -->
         <div class="col-md-4 food-item" data-name="Chicken">
           <div class="food-card">
             <img src="https://i.pinimg.com/474x/01/e3/d3/01e3d39e4cac6dcb0e84ec7fd90b1ac4.jpg" alt="Chicken">
@@ -121,7 +116,6 @@
           </div>
         </div>
 
-        <!-- Biscuits -->
         <div class="col-md-4 food-item" data-name="Biscuits">
           <div class="food-card">
             <img src="https://i.pinimg.com/736x/a2/54/ab/a254ab3176f62d952a39db1c7a2a6a2b.jpg" alt="Biscuits">
@@ -131,7 +125,6 @@
           </div>
         </div>
 
-        <!-- Fish -->
         <div class="col-md-4 food-item" data-name="Fish">
           <div class="food-card">
             <img src="https://i.pinimg.com/736x/5b/f1/e4/5bf1e4b50241c8fc03b262a96b2e3146.jpg" alt="Fish">
@@ -141,7 +134,6 @@
           </div>
         </div>
 
-        <!-- Rice -->
         <div class="col-md-4 food-item" data-name="Rice">
           <div class="food-card">
             <img src="https://i.pinimg.com/736x/0e/95/0a/0e950a7ce52cbd3868e3a51a84dec900.jpg" alt="Rice">
@@ -150,10 +142,13 @@
             <input type="number" id="quantity_rice" class="form-control mt-2" placeholder="Quantity in grams">
           </div>
         </div>
+        <!-- Food Items End -->
+      </div>
     </form>
 
     <div class="calorie-summary text-center mt-4" id="result"></div>
   </div>
+
   <div class="text-center mt-4">
     <button onclick="searchFood(event)" type="button"
       class="btn btn-lg btn-gradient px-5 py-3 shadow rounded-pill text-white"
@@ -161,9 +156,11 @@
        Calculate Calories
     </button>
   </div>
-  <br>
-  <br>
+
+  <br><br>
+
   <div id="calorieTip" class="alert alert-info mt-3 text-center fs-4 fw-bold" style="display: none;"></div>
+
   <div class="text-center mt-2 mb-5">
     <button onclick="resetInputs()" type="button"
       class="btn btn-lg btn-gradient px-4 py-2 shadow rounded-pill text-white"
@@ -171,8 +168,6 @@
       Reset
     </button>
   </div>
-  
-
 
   <style>
     .food-card {
@@ -184,27 +179,27 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       background-color: #fff;
     }
-  
+
     .food-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
       border-radius: 10px;
     }
-  
+
     .food-card h5 {
       margin-top: 10px;
       font-weight: bold;
     }
-  
+
     .food-card input {
       width: 80%;
       margin: auto;
     }
-  
+
     #food-list {
       margin-top: 20px;
     }
   </style>
-  
+
 {% endblock %}
