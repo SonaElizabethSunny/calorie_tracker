@@ -56,6 +56,25 @@ A web application built with Django that allows users to track their calorie int
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+8. Usage
+After setting up the project:
 
+bash
+Copy code
+python manage.py runserver
+Visit http://127.0.0.1:8000/ in your browser to use the calorie tracker app.
 
+9. Fyture Improvements
+Add daily goal reminders.
 
+Dark mode support.
+
+Generate weekly and monthly calorie reports (PDF export).
+
+Visual calorie trends with charts/graphs using Chart.js or Recharts.
+
+Integrate barcode scanner (for packaged food items).
+
+Create a mobile-friendly PWA version (Progressive Web App).
+
+Add calorie burn tracking via exercise logs.
