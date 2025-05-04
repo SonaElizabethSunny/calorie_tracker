@@ -54,7 +54,7 @@ A web application built with Django that allows users to track their calorie int
 6. Create a new Pull Request.
 --------------------------------------------------
 
-8. Usage
+## Usage
    
 After setting up the project:
 
@@ -63,7 +63,7 @@ Copy code
 python manage.py runserver
 Visit http://127.0.0.1:8000/ in your browser to use the calorie tracker app.
 
-9. Future Improvements
+## Future Improvements
     
 Add daily goal reminders.
 
@@ -80,7 +80,7 @@ Create a mobile-friendly PWA version (Progressive Web App).
 Add calorie burn tracking via exercise logs.
 
 
-Author
+## Author
 
 Sona Sunny
 GitHub Profile: https://github.com/SonaElizabethSunny
